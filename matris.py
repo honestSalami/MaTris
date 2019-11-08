@@ -354,7 +354,7 @@ class Matris(object):
         if not self.blend():
             self.gameover_sound.play()
             self.gameover()
-            
+
         self.needs_redraw = True
 
     def remove_lines(self):
@@ -431,13 +431,15 @@ class Game(object):
         clock = pygame.time.Clock()
 
         self.matris = Matris()
-        
+
         screen.blit(construct_nightmare(screen.get_size()), (0,0))
-        
-        matris_border = Surface((MATRIX_WIDTH*BLOCKSIZE+BORDERWIDTH*2, VISIBLE_MATRIX_HEIGHT*BLOCKSIZE+BORDERWIDTH*2))
+
+        matris_border = Surface(
+            (MATRIX_WIDTH*BLOCKSIZE+BORDERWIDTH*2,
+             VISIBLE_MATRIX_HEIGHT*BLOCKSIZE+BORDERWIDTH*2))
         matris_border.fill(BORDERCOLOR)
         screen.blit(matris_border, (MATRIS_OFFSET,MATRIS_OFFSET))
-        
+
         self.redraw()
 
         while True:
@@ -447,7 +449,6 @@ class Game(object):
                     self.redraw()
             except GameOver:
                 return
-      
 
     def redraw(self):
         """
